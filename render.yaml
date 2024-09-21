@@ -1,6 +1,6 @@
 databases:
   - name: rails_project_65
-    databaseName: rails_project_65_production
+    databaseName: rails_project_65_production_z0va
     user: rails_project_65
     plan: free
 
@@ -15,7 +15,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: rails_project_65
+          name: rails_project_65_production
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false

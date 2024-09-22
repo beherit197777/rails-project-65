@@ -21,7 +21,11 @@
                <li class="nav-item">
                  <%= link_to "Home", root_path, class: "nav-link" %>
                </li>
-               <!-- Add more nav items as needed -->
+               <% if session[:user_id] %>
+                  <%= link_to 'Выйти', logout_path, method: :delete %>
+                    <% else %>
+                  <%= button_to 'Войти через GitHub', auth_request_path(:github), method: :post %>
+                    <% end %>
              </ul>
            </div>
          </div>

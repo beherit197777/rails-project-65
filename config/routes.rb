@@ -5,14 +5,13 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Render dynamic PWA files from app/views/pwa/*
-  get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-  get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-
   scope module: :web do
-    post "auth/:provider", to: "auth#request", as: :auth_request
-    get "auth/:provider/callback", to: "auth#callback", as: :callback_auth
-    delete "auth/logout", to: "auth#logout"
+    post "/auth/:provider", to: "auth#request", as: :auth_request
+    get "/auth/:provider/callback", to: "auth#callback", as: :callback_auth
+    delete "/auth/logout", to: "auth#destroy"
+
+    resource :profile, only: :show
+
     resources :bulletins, only: %i[index show new edit create update] do
       member do
         patch :to_moderation, :archive
@@ -20,7 +19,16 @@ Rails.application.routes.draw do
     end
 
     root to: "bulletins#index"
-  end
 
-  # Defines the root path route ("/")
+    namespace :admin do
+      root to: "bulletins#on_moderation"
+      resources :bulletins, only: :index do
+        get :on_moderation, on: :collection
+        member do
+          patch :publish, :archive, :reject
+        end
+      end
+      resources :categories, only: %i[index new edit create update destroy]
+    end
+  end
 end

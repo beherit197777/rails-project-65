@@ -35,7 +35,6 @@ module Web
     test "should logout" do
       sign_in users(:one)
       delete auth_logout_path
-
       assert session[:user_id].nil?
       assert_redirected_to root_path
     end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Web
-  class BulletinsController < ApplicationController
+  class BulletinsController < Web::ApplicationController
     before_action :authenticate_user!, only: %i[new edit create update to_moderate archive]
     before_action :set_current_user_bulletin, only: %i[edit update to_moderate archive]
 

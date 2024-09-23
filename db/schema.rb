@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_22_202533) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_23_091653) do
   create_table "bulletins", force: :cascade do |t|
     t.string "title", null: false
     t.text "description", null: false
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_22_202533) do
     t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state", default: "draft", null: false
     t.index ["category_id"], name: "index_bulletins_on_category_id"
     t.index ["user_id"], name: "index_bulletins_on_user_id"
   end
@@ -33,6 +34,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_22_202533) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false, null: false
   end
 
   add_foreign_key "bulletins", "categories"

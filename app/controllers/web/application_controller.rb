@@ -3,5 +3,6 @@
 module Web
     class ApplicationController < ActionController::Base
       include AuthConcern
+      include Pundit::Authorization
     end
 end

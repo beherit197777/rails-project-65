@@ -44,6 +44,7 @@ gem "simple_form"
 gem "slim"
 gem "slim_lint"
 gem "slim-rails"
+gem "pundit"
 
 
 

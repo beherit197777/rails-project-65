@@ -37,6 +37,9 @@ gem "bootsnap", require: false
 gem "rollbar"
 gem "omniauth-github"
 gem "omniauth-rails_csrf_protection"
+gem "aasm"
+gem "ransack"
+gem "kaminari"
 
 
 

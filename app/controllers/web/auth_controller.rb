@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Web
-  class AuthController < ApplicationController
+  class AuthController < Web::ApplicationController
     def callback
       auth = request.env["omniauth.auth"]
       user = find_or_initialize_user(auth)

@@ -10,9 +10,7 @@ module Web
                    .order(updated_at: :desc)
                    .ransack(params[:q])
 
-      binding.irb
-
-      @bulletins = @q.result.page(page)
+      @bulletins = @q.result.page(params[:page])
       @categories = Category.order(name: :asc)
     end
 

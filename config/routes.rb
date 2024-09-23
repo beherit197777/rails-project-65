@@ -13,8 +13,13 @@ Rails.application.routes.draw do
     post "auth/:provider", to: "auth#request", as: :auth_request
     get "auth/:provider/callback", to: "auth#callback", as: :callback_auth
     delete "auth/logout", to: "auth#logout"
-    resources :bulletins
-    root "bulletins#index"
+    resources :bulletins, only: %i[index show new edit create update] do
+      member do
+        patch :to_moderation, :archive
+      end
+    end
+
+    root to: "bulletins#index"
   end
 
   # Defines the root path route ("/")

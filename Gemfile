@@ -40,6 +40,10 @@ gem "omniauth-rails_csrf_protection"
 gem "aasm"
 gem "ransack"
 gem "kaminari"
+gem "simple_form"
+gem "slim"
+gem "slim_lint"
+gem "slim-rails"
 
 
 

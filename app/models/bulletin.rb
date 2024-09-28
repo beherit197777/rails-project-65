@@ -4,8 +4,14 @@ class Bulletin < ApplicationRecord
   belongs_to :category
   belongs_to :user, inverse_of: "bulletins"
 
+  has_one_attached :image
+
   validates :title, presence: true, length: { minimum: 2, maximum: 50 }
   validates :description, presence: true, length: { minimum: 2, maximum: 1000 }
+
+  # validates :image, attached: true,
+  #                   content_type: %i[png jpg jpeg],
+  #                   size: { less_than: 5.megabytes }
 
   scope :published_or_created_by, ->(user) { published.or(Bulletin.where(user_id: user.id)) }
 

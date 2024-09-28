@@ -45,8 +45,15 @@ gem "slim"
 gem "slim_lint"
 gem "slim-rails"
 gem "pundit"
-
-
+gem "rubocop-rails"
+gem "html2slim"
+gem "i18n-tasks"
+gem "rails-i18n"
+gem "importmap-rails"
+gem "aws-sdk-s3"
+gem "image_processing"
+gem "file_validators"
+gem "active_storage_validations"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -61,6 +68,8 @@ group :development, :test do
   gem "dotenv-rails"
 
   gem "sqlite3", ">= 1.4"
+
+  gem "faker"
 end
 
 group :development do
@@ -72,7 +81,6 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-  gem "faker"
 end
 
 group :production do

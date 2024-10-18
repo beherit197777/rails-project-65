@@ -1,13 +1,13 @@
 ul.nav.flex-column.nav-pills
   li.nav-item
-    = link_to t('bulletins_on_moderation'),
-      on_moderation_admin_bulletins_path,
-      class: "nav-link link-dark #{' active' if current_page?(on_moderation_admin_bulletins_path) || current_page?(admin_root_path)}"
+  = link_to t('bulletins_on_moderation'),
+          on_moderation_admin_bulletins_path,
+          class: "nav-link link-dark #{' active' if current_page?(on_moderation_admin_bulletins_path) || current_page?(admin_root_path)}"
   li.nav-item
     = link_to t('all_bulletins'),
-      admin_bulletins_path,
-      class: "nav-link link-dark #{' active' if current_page?(admin_bulletins_path)}"
+            admin_bulletins_path,
+            class: "nav-link link-dark #{' active' if current_page?(admin_bulletins_path)}"
   li.nav-item
     = link_to t('all_categories'),
-      admin_categories_path,
-      class: "nav-link link-dark #{' active' if current_page?(admin_categories_path)}"
+            admin_categories_path,
+            class: "nav-link link-dark #{' active' if current_page?(admin_categories_path)}"

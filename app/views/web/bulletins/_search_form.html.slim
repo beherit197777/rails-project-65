@@ -1,11 +1,14 @@
-= search_form_for bulletin, url: do |f|
-  .row.my-2
-    .col-6
-      = f.search_field :title_cont, class: 'form-control'
-      small.form-text.text-muted
-        = t('search_by_title')
-    .col-4
-      = f.select :category_id_eq, Category.all.map { |c| [c.name, c.id] }, include_blank: true
-    .col-2
+= search_form_for bulletin, url: bulletins_path, method: :get do |f|
+  .row.g-2.align-items-center
+    .col-md-8
+      = f.input :title_cont, label: false, placeholder: t('search_by_title')
+    .col-md-4
+      = f.input :category_id_eq, as: :select, collection: Category.all.map { |c| [c.name, c.id] }, include_blank: true, label: false
+    .col-12.d-flex.justify-content-end.mt-2
       = f.submit t('ransack.search'), class: 'btn btn-primary me-2'
-      = link_to t('reset_btn'), url, class: 'btn btn-outline-primary'
+      = link_to t('reset_btn'), bulletins_path, class: 'btn btn-outline-primary'
+
+
+
+
+

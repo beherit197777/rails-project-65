@@ -34,7 +34,7 @@ module Web
       authorize @bulletin
 
       if @bulletin.save
-        redirect_to profile_path, notice: t(".success")
+        redirect_to profile_profiles_path, notice: t(".success")
       else
         render :new, status: :unprocessable_entity
       end

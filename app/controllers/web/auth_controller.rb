@@ -14,9 +14,9 @@ module Web
       end
     end
 
-    def logout
+    def destroy
       sign_out
-      redirect_to root_path
+      redirect_to root_path, notice: t("successful_logout")
     end
 
     private

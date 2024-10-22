@@ -16,11 +16,11 @@ class Bulletin < ApplicationRecord
   scope :published_or_created_by, ->(user) { published.or(Bulletin.where(user_id: user.id)) }
 
 
-  aasm column: "state" do
+  aasm column: :state do
     state :draft, initial: true
     state :under_moderation, :published, :rejected, :archived
 
-    event :to_moderation do
+    event :to_moderate do
       transitions from: :draft, to: :under_moderation
     end
 

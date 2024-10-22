@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-module Web
   module Admin
-    class HomeController < Web::Admin::ApplicationController
+    class HomeController < Web::ApplicationController
       def index
         @q = Bulletin.under_moderation
                      .order(updated_at: :desc)
@@ -13,4 +12,4 @@ module Web
       end
     end
   end
-end
+

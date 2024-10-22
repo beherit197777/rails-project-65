@@ -1,8 +1,8 @@
 ul.nav.flex-column.nav-pills
   li.nav-item
-  = link_to t('bulletins_on_moderation'),
-          on_moderation_admin_bulletins_path,
-          class: "nav-link link-dark #{' active' if current_page?(on_moderation_admin_bulletins_path) || current_page?(admin_root_path)}"
+  = link_to t('bulletins_to_moderate'),
+          admin_root_path,
+          class: "nav-link link-dark #{' active' if current_page?(root_path) || current_page?(admin_root_path)}"
   li.nav-item
     = link_to t('all_bulletins'),
             admin_bulletins_path,

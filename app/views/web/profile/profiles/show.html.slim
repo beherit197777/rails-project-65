@@ -32,8 +32,8 @@
                 td
                   = link_to t('show'), bulletin_path(bulletin), class: 'me-1'
                   = link_to t('edit'), edit_bulletin_path(bulletin), class: 'me-1'
-                  - if bulletin.may_to_moderation?
-                    = link_to t('on_moderation'), to_moderation_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'me-1'
+                  - if bulletin.may_to_moderate?
+                    = link_to t('to_moderate'), to_moderate_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'me-1'
                   - if bulletin.may_archive?
                     = link_to t('to_archive'), archive_bulletin_path(bulletin), data: { turbo_confirm: t('are_you_sure_archive'), turbo_method: :patch }, class: 'me-1 link-danger'
       .row.mt-2

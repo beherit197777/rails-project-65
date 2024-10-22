@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-module Web
   module Admin
-    class CategoriesController < Web::Admin::ApplicationController
+    class CategoriesController < Web::ApplicationController
       before_action :set_category, only: %i[edit update destroy]
 
       def index
@@ -56,4 +55,3 @@ module Web
       end
     end
   end
-end

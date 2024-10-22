@@ -16,24 +16,24 @@ Rails.application.routes.draw do
     end
     resources :bulletins, only: %i[index show new edit create update] do
       member do
-        patch :to_moderation, :archive
+        patch :to_moderate, :archive
       end
     end
 
     root to: "bulletins#index"
-
-    namespace :admin do
-      root to: "bulletins#on_moderation"
-      resources :bulletins, only: :index do
-        get :on_moderation, on: :collection
-        member do
-          patch :publish, :archive, :reject
-        end
-      end
-      resources :categories, only: %i[index new edit create update destroy]
-    end
     # scope module: :profile do
     #   get 'profile', to: 'profile#show'
     # end
+  end
+
+  namespace :admin do
+    root to: "bulletins#on_moderation", filter: :under_moderation
+    resources :bulletins, only: %i[index], filter: :all do
+      # get :index, on: :collection
+      member do
+        patch :publish, :archive, :reject
+      end
+    end
+    resources :categories, only: %i[index new edit create update destroy]
   end
 end

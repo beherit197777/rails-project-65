@@ -11,7 +11,6 @@ module Web
                        .order(updated_at: :desc)
                        .page(params[:page])
                        .per(12)
-
       end
     end
   end

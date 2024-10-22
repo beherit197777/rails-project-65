@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+  # frozen_string_literal: true
 
   module Admin
     class HomeController < Web::ApplicationController
@@ -12,4 +12,3 @@
       end
     end
   end
-

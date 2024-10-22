@@ -69,9 +69,9 @@ module Web
       authorize @bulletin
       if @bulletin.may_to_moderate?
         @bulletin.to_moderate!
-        flash[:notice] = t('.notice')
+        flash[:notice] = t(".notice")
       else
-        flash[:alert] = t('.alert')
+        flash[:alert] = t(".alert")
       end
       redirect_to profile_profiles_path
     end

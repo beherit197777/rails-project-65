@@ -54,6 +54,8 @@ gem "aws-sdk-s3"
 gem "image_processing"
 gem "file_validators"
 gem "active_storage_validations"
+gem 'rexml'
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

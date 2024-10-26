@@ -484,6 +484,7 @@ DEPENDENCIES
   rails (~> 7.2.1)
   rails-i18n
   ransack
+  rexml
   rollbar
   rubocop-rails
   rubocop-rails-omakase

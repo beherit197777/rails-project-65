@@ -1,6 +1,6 @@
 databases:
   - name: rails_project_65
-    databaseName: rails_project_65_production_z0va
+    databaseName: rails_project_65_production_z0va_596w
     user: rails_project_65
     plan: free
 

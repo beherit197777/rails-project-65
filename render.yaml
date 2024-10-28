@@ -9,7 +9,7 @@ services:
     name: rails_project_65
     runtime: ruby
     plan: free
-    buildCommand: "./bin/render-build.sh"
+    buildCommand: bundle install && yarn install && yarn build && bundle exec rake assets:precompile && exec rake db:migrate && exec rake db:seed
     # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:

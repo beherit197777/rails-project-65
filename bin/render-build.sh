@@ -2,14 +2,8 @@
 # exit on error
 set -o errexit
 
-rm -rf node_modules
-rm -rf tmp/cache
-rm -rf public/assets
-
 bundle install
-yarn install --frozen-lockfile
-
-npm install -g esbuild
+yarn install
 
 yarn build
 yarn build:css

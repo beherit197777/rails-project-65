@@ -3,7 +3,7 @@
 [![hexlet-check](https://github.com/beherit197777/rails-project-64/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/beherit197777/rails-project-65/actions/workflows/hexlet-check.yml)
 [![Rails](https://github.com/beherit197777/rails-project-64/actions/workflows/ci.yml/badge.svg)](https://github.com/beherit197777/rails-project-65/actions/workflows/ci.yml)
 
-eployed application link: https://rails-project-65-p78s.onrender.com
+Deployed application link: https://rails-project-65-p78s.onrender.com
 
 <!-- This is a . The project includes features such as . -->
 

@@ -3,7 +3,7 @@
 module Web
   class BulletinsController < Web::ApplicationController
     before_action :authenticate_user!, only: %i[new edit create update to_moderate archive]
-    before_action :set_current_user_bulletin, only: %i[edit update to_moderate archive]
+    before_action :set_current_user_bulletin, only: %i[show edit update to_moderate archive]
 
     def index
       @q = Bulletin.published
@@ -54,18 +54,8 @@ module Web
         render :edit, status: :unprocessable_entity
       end
     end
-
-    # def to_moderate
-    #   authorize @bulletin
-    #
-    #   if @bulletin.may_to_moderate?
-    #     @bulletin.to_moderate!
-    #     redirect_back fallback_location: profile_profiles_path, notice: t(".success")
-    #   else
-    #     redirect_back fallback_location: profile_profiles_path, notice: t(".error")
-    #   end
-    # end
     def to_moderate
+      @bulletin = Bulletin.find(params[:id])
       authorize @bulletin
       if @bulletin.may_to_moderate?
         @bulletin.to_moderate!
@@ -77,6 +67,7 @@ module Web
     end
 
     def archive
+      @bulletin = Bulletin.find(params[:id])
       authorize @bulletin
 
       if @bulletin.may_archive?
@@ -94,7 +85,7 @@ module Web
     end
 
     def set_current_user_bulletin
-      @bulletin = current_user.bulletins.find params[:id]
+      @bulletin = Bulletin.find(params[:id])
     end
   end
 end

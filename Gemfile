@@ -54,7 +54,7 @@ gem "aws-sdk-s3"
 gem "image_processing"
 gem "file_validators"
 gem "active_storage_validations"
-gem 'rexml'
+gem "rexml"
 
 
 group :development, :test do
@@ -62,7 +62,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem 'brakeman', '~> 6.2.2'
+  gem "brakeman", "~> 6.2.2"
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
@@ -71,7 +71,7 @@ group :development, :test do
 
   gem "sqlite3", ">= 1.4"
 
-  gem 'faker'
+  gem "faker"
 end
 
 group :development do

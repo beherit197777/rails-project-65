@@ -28,7 +28,7 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def to_moderate?
-    author?
+    user.admin? || author?
   end
 
   def archive?

@@ -47,3 +47,21 @@ ru:
   all_bulletins: "Все Объявления"
   all_categories: "Все Категории"
   to_moderate: "На модерацию"
+  archive: "Архивировать"
+  web:
+    admin:
+      bulletins:
+        reject:
+          error: "Ошибка при отклонении бюллетеня"
+        error: "Произошла ошибка"
+        actions:
+          to_moderate: "На модерацию"
+          to_archive: "В архив"
+        confirmations:
+          archive: "Вы уверены, что хотите отправить объявление в архив?"
+          to_moderate: "Вы уверены, что хотите отправить объявление на модерацию?"
+        to_moderate:
+          notice: "Объявление отправлено на модерацию"
+  user_not_authorized: "в Архив!"
+  notice: "Объявление отправлено на модерацию"
+  alert: "Произошла ошибка"

@@ -1,16 +1,14 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  name: MyString1
-  email: MyString1
+  name: <%= Faker::Name.name %>
+  email: <%= Faker::Internet.email %>
   admin: false
 
 two:
-  name: MyString2
-  email: MyString2
+  name: <%= Faker::Name.name %>
+  email: <%= Faker::Internet.email %>
   admin: false
 
 admin:
-  name: MyString3
-  email: MyString3
+  name: <%= Faker::Name.name %>
+  email: <%= Faker::Internet.email %>
   admin: true

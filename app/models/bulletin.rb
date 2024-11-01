@@ -9,12 +9,7 @@ class Bulletin < ApplicationRecord
   validates :title, presence: true, length: { minimum: 2, maximum: 50 }
   validates :description, presence: true, length: { minimum: 2, maximum: 1000 }
 
-  # validates :image, attached: true,
-  #                   content_type: %i[png jpg jpeg],
-  #                   size: { less_than: 5.megabytes }
-
   scope :published_or_created_by, ->(user) { published.or(Bulletin.where(user_id: user.id)) }
-
 
   aasm column: :state do
     state :draft, initial: true
@@ -39,5 +34,9 @@ class Bulletin < ApplicationRecord
 
   def self.ransackable_attributes(_auth_object = nil)
     %w[title state category_id]
+  end
+
+  def may_be_edited?
+    draft? || rejected?
   end
 end

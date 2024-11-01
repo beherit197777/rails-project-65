@@ -1,6 +1,6 @@
 .row
   .col-md-3
-      = render 'admin/shared/nav'
+      = render 'web/admin/shared/nav'
   .col-md-9
     h1.h2.mb-4
       = t('categories').capitalize
@@ -23,5 +23,6 @@
               td
                 = category.name
               td
-                = link_to t('edit'), edit_admin_category_path(category), class: 'me-1'
-                = link_to t('remove'), admin_category_path(category), data: { turbo_confirm: t('are_you_sure_remove_category'), turbo_method: :delete }, class: 'link-danger'
+                .d-flex.gap-2
+                = button_to t('edit'), edit_admin_category_path(category), method: :get, class: 'btn btn-primary'
+                = button_to t('remove'), admin_category_path(category),method: :patch, data: { turbo: false }, class: 'btn btn-danger'

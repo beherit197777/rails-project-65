@@ -1,5 +1,6 @@
-  # frozen_string_literal: true
+# frozen_string_literal: true
 
+module Web
   module Admin
     class CategoriesController < Web::ApplicationController
       before_action :set_category, only: %i[edit update destroy]
@@ -35,13 +36,8 @@
       end
 
       def destroy
-        if @category.bulletins.exists?
-          redirect_to admin_categories_path, alert: t(".cant_delete_category")
-        elsif @category.destroy
-          redirect_to admin_categories_path, notice: t(".success")
-        else
-          redirect_to admin_categories_path, alert: @category.errors.full_messages.to_sentence
-        end
+        @category.destroy
+        redirect_to admin_categories_path, notice: t(".success")
       end
 
       private
@@ -55,3 +51,4 @@
       end
     end
   end
+end

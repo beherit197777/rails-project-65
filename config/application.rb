@@ -26,5 +26,16 @@ module RailsProject65
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.action_view.sanitized_allowed_tags = %w[
+    strong em b i p code pre tt samp kbd var sub sup dfn cite big small address
+    hr br div span h1 h2 h3 h4 h5 h6 ul ol li dl dt dd abbr acronym a img
+    blockquote del ins table tr td th thead tbody tfoot
+]
+
+    config.action_view.sanitized_allowed_attributes = %w[
+    href src width height alt cite datetime title class name xml:lang abbr style
+    target rel data-method data-confirm
+]
+
   end
 end

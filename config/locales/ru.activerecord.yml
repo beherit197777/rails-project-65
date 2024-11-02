@@ -26,3 +26,11 @@ ru:
       models:
     models:
       bulletin: Объявление
+  web:
+    admin:
+      bulletins:
+        on_moderation:
+          confirm:
+            reject: "Отклонено"
+            archive: "В Архив"
+

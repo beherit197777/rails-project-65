@@ -1,14 +1,14 @@
 one:
-  name: <%= Faker::Name.name %>
-  email: <%= Faker::Internet.email %>
+  name: "Ivan"
+  email: "user@mail.ru"
   admin: false
 
 two:
-  name: <%= Faker::Name.name %>
-  email: <%= Faker::Internet.email %>
+  name: "Igor"
+  email: "user3@mail.ru"
   admin: false
 
 admin:
   name: admin
-  email: <%= Faker::Internet.email %>
+  email: "admin@mail.ru"
   admin: true

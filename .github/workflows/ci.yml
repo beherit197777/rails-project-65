@@ -36,4 +36,4 @@ jobs:
         run: yarn install
 
       - name: Make env file
-        run: make make_env_file
+        run: make init-env

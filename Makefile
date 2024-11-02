@@ -13,6 +13,6 @@ lint:
 	bundle exec rubocop
 
 init-env:
-	cp .env.example .env
+	touch .env
 
 .PHONY: test

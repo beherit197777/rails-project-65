@@ -36,8 +36,12 @@ module Web
       end
 
       def destroy
-        @category.destroy
-        redirect_to admin_categories_path, notice: t(".success")
+        if @category.bulletins.exists?
+          redirect_to admin_categories_path, alert: t('.cannot_delete')
+        else
+          @category.destroy
+          redirect_to admin_categories_path, notice: t('.success')
+        end
       end
 
       private

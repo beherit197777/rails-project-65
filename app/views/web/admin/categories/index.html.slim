@@ -25,4 +25,4 @@
               td
                 .d-flex.gap-2
                 = button_to t('edit'), edit_admin_category_path(category), method: :get, class: 'btn btn-primary'
-                = button_to t('remove'), admin_category_path(category),method: :patch, data: { turbo: false }, class: 'btn btn-danger'
+                = button_to t('remove'), admin_category_path(category), method: :delete, data: { turbo: false }, class: 'btn btn-danger'

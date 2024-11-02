@@ -1,8 +1,8 @@
 one:
-  name: <%= Faker::Commerce.department %>
+  name: "Category 1"
 
 two:
-  name: <%= Faker::Commerce.department %>
+  name: "Category 2"
 
 empty:
-  name: <%= Faker::Commerce.department %>
+  name: "Empty Category"

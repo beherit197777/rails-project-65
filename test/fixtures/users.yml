@@ -9,6 +9,6 @@ two:
   admin: false
 
 admin:
-  name: <%= Faker::Name.name %>
+  name: admin
   email: <%= Faker::Internet.email %>
   admin: true

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
   # namespace :web do
-  #   get 'profile/show'
+  #   get 'profiles/show'
   # end
   scope module: :web do
     post "/auth/:provider", to: "auth#request", as: :auth_request
@@ -31,8 +31,8 @@ Rails.application.routes.draw do
     end
 
     root to: "bulletins#index"
-    # scope module: :profile do
-    #   get 'profile', to: 'profile#show'
+    # scope module: :profiles do
+    #   get 'profiles', to: 'profiles#show'
     # end
   end
 end

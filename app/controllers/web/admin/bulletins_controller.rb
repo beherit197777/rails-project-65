@@ -48,7 +48,7 @@ module Web
         else
           flash[:alert] = t(".alert")
         end
-        redirect_to profile_profiles_path
+        redirect_to profile_path
       end
 
       def archive

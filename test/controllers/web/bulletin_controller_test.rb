@@ -47,9 +47,9 @@ class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
   test "should create bulletin for logged in user" do
     sign_in(@current_user)
     assert_difference("Bulletin.count") do
-      post bulletins_url, params: @bulletin_attrs
+      post bulletins_path, params: @bulletin_attrs
     end
-    assert_redirected_to profile_profiles_url  # Изменен редирект
+    assert_redirected_to profile_path
     assert Bulletin.find_by(title: @bulletin_attrs[:bulletin][:title])
   end
 
@@ -72,7 +72,7 @@ class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
     sign_in(@current_user)
     @published_bulletin.update(user: @current_user)
     get edit_bulletin_url(@published_bulletin)
-    assert_redirected_to profile_profiles_url  # Изменен ожидаемый ответ
+    assert_redirected_to profile_url  # Изменен ожидаемый ответ
   end
 
   test "should not get edit for not author" do
@@ -105,7 +105,7 @@ class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
   test "should move to moderate for author" do
     sign_in(@current_user)
     patch to_moderate_bulletin_url(@drafted_bulletin)
-    assert_redirected_to profile_profiles_url
+    assert_redirected_to profile_url
     assert @drafted_bulletin.reload.under_moderation?
   end
 
@@ -122,7 +122,7 @@ class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
 
     patch bulletin_url(@published_bulletin), params: @bulletin_attrs
 
-    assert_redirected_to profile_profiles_url
+    assert_redirected_to profile_url
     @published_bulletin.reload
 
     assert_equal @bulletin_attrs[:bulletin][:title], @published_bulletin.title

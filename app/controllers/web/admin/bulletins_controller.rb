@@ -23,9 +23,9 @@ module Web
         authorize @bulletin
         if @bulletin.may_publish?
           @bulletin.publish!
-          redirect_back fallback_location: admin_bulletins_path, notice: t(".success")
+          redirect_back fallback_location: admin_bulletins_path, notice: t('.success')
         else
-          redirect_back fallback_location: admin_bulletins_path, notice: t(".error")
+          redirect_back fallback_location: admin_bulletins_path, notice: t('.error')
         end
       end
 
@@ -33,9 +33,9 @@ module Web
         authorize @bulletin
         if @bulletin.may_reject?
           @bulletin.reject!
-          redirect_back fallback_location: admin_bulletins_path, notice: t(".success")
+          redirect_back fallback_location: admin_bulletins_path, notice: t('.success')
         else
-          redirect_back fallback_location: admin_bulletins_path, notice: t(".error")
+          redirect_back fallback_location: admin_bulletins_path, notice: t('.error')
         end
       end
 
@@ -44,9 +44,9 @@ module Web
         authorize @bulletin
         if @bulletin.may_to_moderate?
           @bulletin.to_moderate!
-          flash[:notice] = t(".notice")
+          flash[:notice] = t('.notice')
         else
-          flash[:alert] = t(".alert")
+          flash[:alert] = t('.alert')
         end
         redirect_to profile_path
       end
@@ -56,9 +56,9 @@ module Web
         authorize @bulletin
         if @bulletin.may_archive?
           @bulletin.archive!
-          redirect_back fallback_location: admin_bulletins_path, notice: t(".success")
+          redirect_back fallback_location: admin_bulletins_path, notice: t('.success')
         else
-          redirect_back fallback_location: admin_bulletins_path, notice: t(".error")
+          redirect_back fallback_location: admin_bulletins_path, notice: t('.error')
         end
       end
 

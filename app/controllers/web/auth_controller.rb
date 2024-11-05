@@ -3,12 +3,12 @@
 module Web
   class AuthController < Web::ApplicationController
     def callback
-      auth = request.env["omniauth.auth"]
+      auth = request.env['omniauth.auth']
       user = find_or_initialize_user(auth)
 
       if user.save
         sign_in(user)
-        redirect_to root_path, notice: t("successful_login")
+        redirect_to root_path, notice: t('successful_login')
       else
         redirect_to root_path, alert: user.errors.full_messages.to_sentence
       end
@@ -16,7 +16,7 @@ module Web
 
     def destroy
       sign_out
-      redirect_to root_path, notice: t("successful_logout")
+      redirect_to root_path, notice: t('successful_logout')
     end
 
     private

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Bulletin < ApplicationRecord
   include AASM
 
   belongs_to :category
-  belongs_to :user, inverse_of: "bulletins"
+  belongs_to :user, inverse_of: 'bulletins'
 
   has_one_attached :image
 

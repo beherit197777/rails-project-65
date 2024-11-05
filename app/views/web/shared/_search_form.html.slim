@@ -5,8 +5,6 @@
       small.form-text.text-muted
         = t('search_by_title')
     .col-3
-      / = f.select :state_eq, collection: Bulletin.aasm.states, value_method: :name, label: false,
-      /   label_method: :human_name, hint: t('search_by_state'), hint_html: { class: 'text-muted' }
       = f.select :state_eq, Bulletin.aasm.states.map { |state| [state.human_name, state.name] }, { include_blank: t('all_states') }, { class: 'form-select' }
 
     .col-3

@@ -26,7 +26,7 @@ module Web
     def edit
       authorize @bulletin
 
-      redirect_to profile_path, notice: t(".cant_edit") unless @bulletin.may_be_edited?
+      redirect_to profile_path, notice: t('.cant_edit') unless @bulletin.may_be_edited?
     end
 
     def create
@@ -34,7 +34,7 @@ module Web
       authorize @bulletin
 
       if @bulletin.save
-        redirect_to profile_path, notice: t(".success")
+        redirect_to profile_path, notice: t('.success')
       else
         render :new, status: :unprocessable_entity
       end
@@ -44,12 +44,12 @@ module Web
       authorize @bulletin
 
       unless @bulletin.may_be_edited?
-        redirect_to profile_path, notice: t(".cant_edit")
+        redirect_to profile_path, notice: t('.cant_edit')
         return
       end
 
       if @bulletin.update(bulletin_params)
-        redirect_to profile_path, notice: t(".success")
+        redirect_to profile_path, notice: t('.success')
       else
         render :edit, status: :unprocessable_entity
       end
@@ -59,9 +59,9 @@ module Web
       authorize @bulletin
       if @bulletin.may_to_moderate?
         @bulletin.to_moderate!
-        flash[:notice] = t(".notice")
+        flash[:notice] = t('.notice')
       else
-        flash[:alert] = t(".alert")
+        flash[:alert] = t('.alert')
       end
       redirect_to profile_path
     end
@@ -72,9 +72,9 @@ module Web
 
       if @bulletin.may_archive?
         @bulletin.archive!
-        redirect_back fallback_location: profile_path, notice: t(".success")
+        redirect_back fallback_location: profile_path, notice: t('.success')
       else
-        redirect_back fallback_location: profile__path, notice: t(".error")
+        redirect_back fallback_location: profile__path, notice: t('.error')
       end
     end
 

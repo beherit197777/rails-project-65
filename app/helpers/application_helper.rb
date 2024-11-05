@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def safe_paginate(collection, options = {})
     sanitize(paginate(collection, options))

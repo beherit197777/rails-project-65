@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
 class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -11,7 +11,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     @published_bulletin = bulletins(:published)
   end
 
-  test "should get index when admin" do
+  test 'should get index when admin' do
     sign_in @admin_user
 
     get admin_root_path
@@ -19,7 +19,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should publish bulletin when admin" do
+  test 'should publish bulletin when admin' do
     sign_in @admin_user
 
     patch publish_admin_bulletin_url(@under_moderation_bulletin)
@@ -27,7 +27,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert @under_moderation_bulletin.reload.published?
   end
 
-  test "should reject bulletin when admin" do
+  test 'should reject bulletin when admin' do
     sign_in @admin_user
 
     patch reject_admin_bulletin_url(@under_moderation_bulletin)
@@ -35,7 +35,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert @under_moderation_bulletin.reload.rejected?
   end
 
-  test "should archive bulletin when admin" do
+  test 'should archive bulletin when admin' do
     sign_in @admin_user
 
     patch archive_admin_bulletin_url(@under_moderation_bulletin)
@@ -43,7 +43,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert @under_moderation_bulletin.reload.archived?
   end
 
-  test "should not publish drafted bulletin when admin" do
+  test 'should not publish drafted bulletin when admin' do
     sign_in @admin_user
 
     patch publish_admin_bulletin_url(@drafted_bulletin)

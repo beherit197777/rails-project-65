@@ -1,8 +1,10 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-require "rails/all"
+require_relative 'boot'
 
-ENV["RANSACK_FORM_BUILDER"] = "::SimpleForm::FormBuilder"
+require 'rails/all'
+
+ENV['RANSACK_FORM_BUILDER'] = '::SimpleForm::FormBuilder'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -36,6 +38,5 @@ module RailsProject65
     href src width height alt cite datetime title class name xml:lang abbr style
     target rel data-method data-confirm
 ]
-
   end
 end

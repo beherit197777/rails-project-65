@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
 module Web
   class AuthControllerTest < ActionDispatch::IntegrationTest
-    test "check github auth" do
-      post auth_request_path("github")
+    test 'check github auth' do
+      post auth_request_path('github')
 
       assert_response :redirect
     end
 
-    test "create" do
+    test 'create' do
       auth_hash = {
-        provider: "github",
-        uid: "12345",
+        provider: 'github',
+        uid: '12345',
         info: {
           email: Faker::Internet.email,
           name: Faker::Name.first_name
@@ -22,7 +22,7 @@ module Web
 
       OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash::InfoHash.new(auth_hash)
 
-      get callback_auth_url("github")
+      get callback_auth_url('github')
 
       assert_response :redirect
 
@@ -32,7 +32,7 @@ module Web
       assert_predicate self, :signed_in?
     end
 
-    test "should logout" do
+    test 'should logout' do
       sign_in users(:one)
       delete auth_logout_path
       assert session[:user_id].nil?

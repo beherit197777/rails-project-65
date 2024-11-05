@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
 class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -9,56 +9,56 @@ class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
     @current_user = users(:one)
     @bulletin_attrs = {
       bulletin: {
-        title: "New test title",
-        description: "New test description",
-        image: fixture_file_upload("bulletin1.jpg", "image/jpg"),
+        title: 'New test title',
+        description: 'New test description',
+        image: fixture_file_upload('bulletin1.jpg', 'image/jpg'),
         category_id: Category.last.id
       }
     }
   end
 
-  test "should get index" do
+  test 'should get index' do
     get root_path
     assert_response :success
   end
 
-  test "should get show" do
+  test 'should get show' do
     get bulletin_url(@published_bulletin)
     assert_response :success
   end
 
-  test "should not get show when bulletin is drafted from different user" do
+  test 'should not get show when bulletin is drafted from different user' do
     sign_in(users(:two))
     get bulletin_url(@drafted_bulletin)
     assert_response :not_found  # Изменено с редиректа на 404
   end
 
-  test "should get new for logged in user" do
+  test 'should get new for logged in user' do
     sign_in(@current_user)
     get new_bulletin_url
     assert_response :success
   end
 
-  test "should not get new for not logged in user" do
+  test 'should not get new for not logged in user' do
     get new_bulletin_url
     assert_redirected_to root_url
   end
 
-  test "should create bulletin for logged in user" do
+  test 'should create bulletin for logged in user' do
     sign_in(@current_user)
-    assert_difference("Bulletin.count") do
+    assert_difference('Bulletin.count') do
       post bulletins_path, params: @bulletin_attrs
     end
     assert_redirected_to profile_path
     assert Bulletin.find_by(title: @bulletin_attrs[:bulletin][:title])
   end
 
-  test "should not create bulletin for not logged_in user" do
-    assert_no_difference("Bulletin.count") do
+  test 'should not create bulletin for not logged_in user' do
+    assert_no_difference('Bulletin.count') do
       post bulletins_path, params: {
         bulletin: {
-          title: "New test title",
-          description: "New test description",
+          title: 'New test title',
+          description: 'New test description',
           category_id: categories(:one).id
         }
       }
@@ -68,21 +68,21 @@ class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
   end
 
 
-  test "should get edit for logged in user" do
+  test 'should get edit for logged in user' do
     sign_in(@current_user)
     @published_bulletin.update(user: @current_user)
     get edit_bulletin_url(@published_bulletin)
     assert_redirected_to profile_url  # Изменен ожидаемый ответ
   end
 
-  test "should not get edit for not author" do
+  test 'should not get edit for not author' do
     sign_in(users(:two))
     get edit_bulletin_url(@published_bulletin)
     assert_redirected_to root_url
   end
 
 
-  test "should not update bulletin for not author" do
+  test 'should not update bulletin for not author' do
     sign_in users(:two) # Входим как другой пользователь, не автор
     bulletin = bulletins(:one) # Бюллетень принадлежит первому пользователю
 
@@ -91,8 +91,8 @@ class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
 
     patch bulletin_path(bulletin), params: {
       bulletin: {
-        title: "New test title",
-        description: "New test description"
+        title: 'New test title',
+        description: 'New test description'
       }
     }
 
@@ -102,21 +102,21 @@ class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path # или другой подходящий путь
   end
 
-  test "should move to moderate for author" do
+  test 'should move to moderate for author' do
     sign_in(@current_user)
     patch to_moderate_bulletin_url(@drafted_bulletin)
     assert_redirected_to profile_url
     assert @drafted_bulletin.reload.under_moderation?
   end
 
-  test "should not move to moderate for not author" do
+  test 'should not move to moderate for not author' do
     sign_in(users(:two))
     patch to_moderate_bulletin_path(@drafted_bulletin)
     assert_redirected_to root_path
     assert_not @drafted_bulletin.reload.under_moderation?
   end
 
-  test "should update bulletin for author" do
+  test 'should update bulletin for author' do
     sign_in(@current_user)
     @published_bulletin.update(user: @current_user)
 
@@ -130,7 +130,7 @@ class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
   end
 
 
-  test "should not move to archive for not author" do
+  test 'should not move to archive for not author' do
     sign_in(users(:two))
     patch archive_bulletin_path(@published_bulletin)
     assert_redirected_to root_path

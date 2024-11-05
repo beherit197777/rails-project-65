@@ -29,11 +29,9 @@
                 = time_ago_in_words(bulletin.created_at)
               td
                 .btn-group
-                  = button_to t('show'), bulletin_path(bulletin), method: :get, form_class: "d-inline-block", class: 'btn btn-primary'
+                  = button_to t('show'), bulletin_path(bulletin), method: :get, form_class: 'd-inline-block', class: 'btn btn-primary'
                   - if bulletin.may_archive?
-                    = button_to t('archive'), archive_admin_bulletin_path(bulletin), method: :patch, data: { turbo: false }, form_class: "d-inline-block", class: 'btn btn-danger'
+                    = button_to t('archive'), archive_admin_bulletin_path(bulletin), method: :patch, data: { turbo: false }, form_class: 'd-inline-block', class: 'btn btn-danger'
 
     .row.mt-2
       == paginate(@bulletins, remote: true)
-
-

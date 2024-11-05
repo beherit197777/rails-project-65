@@ -34,6 +34,6 @@
                     = button_to t('archive'), archive_admin_bulletin_path(bulletin), method: :patch, data: { turbo: false }, form_class: "d-inline-block", class: 'btn btn-danger'
 
     .row.mt-2
-      == safe_paginate(@bulletins, remote: true)
+      == paginate(@bulletins, remote: true)
 
 

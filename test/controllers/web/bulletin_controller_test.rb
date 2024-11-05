@@ -4,17 +4,7 @@ require 'test_helper'
 
 class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @published_bulletin = bulletins(:published)
-    @drafted_bulletin = bulletins(:drafted)
-    @current_user = users(:one)
-    @bulletin_attrs = {
-      bulletin: {
-        title: 'New test title',
-        description: 'New test description',
-        image: fixture_file_upload('bulletin1.jpg', 'image/jpg'),
-        category_id: Category.last.id
-      }
-    }
+    setup_bulletins
   end
 
   test 'should get index' do
@@ -64,14 +54,14 @@ class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_redirected_to root_path # или другой путь для авторизации
+    assert_redirected_to root_path
   end
 
   test 'should get edit for logged in user' do
     sign_in(@current_user)
     @published_bulletin.update(user: @current_user)
     get edit_bulletin_url(@published_bulletin)
-    assert_redirected_to profile_url # Изменен ожидаемый ответ
+    assert_redirected_to profile_url
   end
 
   test 'should not get edit for not author' do
@@ -81,8 +71,8 @@ class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not update bulletin for not author' do
-    sign_in users(:two) # Входим как другой пользователь, не автор
-    bulletin = bulletins(:one) # Бюллетень принадлежит первому пользователю
+    sign_in users(:two)
+    bulletin = bulletins(:one)
 
     original_title = bulletin.title
     original_description = bulletin.description
@@ -97,7 +87,7 @@ class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
     bulletin.reload
     assert_equal original_title, bulletin.title
     assert_equal original_description, bulletin.description
-    assert_redirected_to root_path # или другой подходящий путь
+    assert_redirected_to root_path
   end
 
   test 'should move to moderate for author' do

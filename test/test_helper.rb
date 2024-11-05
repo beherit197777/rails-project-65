@@ -3,11 +3,13 @@
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
+require_relative 'support/bulletin_test_helpers'
 
 OmniAuth.config.test_mode = true
 
 module ActiveSupport
   class TestCase
+    include BulletinTestHelpers
     # Run tests in parallel with specified workers
     parallelize(workers: :number_of_processors)
 

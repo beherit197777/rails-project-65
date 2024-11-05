@@ -54,6 +54,7 @@ module Web
         render :edit, status: :unprocessable_entity
       end
     end
+
     def to_moderate
       @bulletin = Bulletin.find(params[:id])
       authorize @bulletin

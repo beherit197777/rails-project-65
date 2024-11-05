@@ -30,7 +30,7 @@ class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
   test 'should not get show when bulletin is drafted from different user' do
     sign_in(users(:two))
     get bulletin_url(@drafted_bulletin)
-    assert_response :not_found  # Изменено с редиректа на 404
+    assert_response :not_found
   end
 
   test 'should get new for logged in user' do
@@ -67,12 +67,11 @@ class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path # или другой путь для авторизации
   end
 
-
   test 'should get edit for logged in user' do
     sign_in(@current_user)
     @published_bulletin.update(user: @current_user)
     get edit_bulletin_url(@published_bulletin)
-    assert_redirected_to profile_url  # Изменен ожидаемый ответ
+    assert_redirected_to profile_url # Изменен ожидаемый ответ
   end
 
   test 'should not get edit for not author' do
@@ -80,7 +79,6 @@ class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
     get edit_bulletin_url(@published_bulletin)
     assert_redirected_to root_url
   end
-
 
   test 'should not update bulletin for not author' do
     sign_in users(:two) # Входим как другой пользователь, не автор
@@ -128,7 +126,6 @@ class Web::BulletinControllerTest < ActionDispatch::IntegrationTest
     assert_equal @bulletin_attrs[:bulletin][:title], @published_bulletin.title
     assert_equal @bulletin_attrs[:bulletin][:description], @published_bulletin.description
   end
-
 
   test 'should not move to archive for not author' do
     sign_in(users(:two))

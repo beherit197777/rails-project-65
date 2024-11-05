@@ -71,7 +71,6 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_equal I18n.t('web.admin.categories.destroy.cannot_delete'), flash[:alert]
   end
 
-
   test 'should delete empty category when admin' do
     sign_in @admin_user
 

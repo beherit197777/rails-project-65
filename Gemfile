@@ -36,28 +36,27 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem 'rollbar'
+gem 'aasm'
+gem 'active_storage_validations'
+gem 'aws-sdk-s3'
+gem 'file_validators'
+gem 'html2slim'
+gem 'i18n-tasks'
+gem 'image_processing'
+gem 'importmap-rails'
+gem 'kaminari'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
-gem 'aasm'
+gem 'pundit'
+gem 'rails-i18n'
 gem 'ransack'
-gem 'kaminari'
+gem 'rexml'
+gem 'rollbar'
+gem 'rubocop-rails'
 gem 'simple_form'
 gem 'slim'
 gem 'slim_lint'
 gem 'slim-rails'
-gem 'pundit'
-gem 'rubocop-rails'
-gem 'html2slim'
-gem 'i18n-tasks'
-gem 'rails-i18n'
-gem 'importmap-rails'
-gem 'aws-sdk-s3'
-gem 'image_processing'
-gem 'file_validators'
-gem 'active_storage_validations'
-gem 'rexml'
-
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

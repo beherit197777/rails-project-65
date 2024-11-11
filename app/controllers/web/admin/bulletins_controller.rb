@@ -54,6 +54,7 @@ module Web
       def archive
         @bulletin = Bulletin.find(params[:id])
         authorize @bulletin
+
         if @bulletin.may_archive?
           @bulletin.archive!
           redirect_back fallback_location: admin_bulletins_path, notice: t('.success')

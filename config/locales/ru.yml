@@ -65,3 +65,4 @@ ru:
   user_not_authorized: "в Архив!"
   notice: "Объявление отправлено на модерацию"
   alert: "Произошла ошибка"
+  bulletins_to_moderate: "Объявления на модерации"

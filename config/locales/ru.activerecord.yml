@@ -33,4 +33,5 @@ ru:
           confirm:
             reject: "Отклонено"
             archive: "В Архив"
+  bulletins_to_moderate: ""
 
